@@ -483,20 +483,40 @@ document.addEventListener("DOMContentLoaded", () => {
       
     </div>
           </div>
-        <!-- 地圖嵌入 -->
-    <!-- 地圖嵌入 -->
-    <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.6055113137354!2d121.55302529999999!3d25.0135172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442aa3b0390f463%3A0x9082f68f52193107!2z5Y-w5YyX5biC5oe35oSb6aSo!5e0!3m2!1szh-TW!2stw!4v1723546074779!5m2!1szh-TW!2stw"
-        width="100%" 
-        height="350" 
-        frameborder="0" allowfullscreen
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-</section>
+        <!-- 響應式地圖容器：維持 16:9 長寬比，可自訂 max-height -->
+<style>
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 比例（可改為 50%、75% 等） */
+  height: 0;
+  overflow: hidden;
+  border-radius: 8px; /* 可選：圓角 */
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08); /* 可選：陰影 */
+}
+.map-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+@media (max-width:600px){
+  .map-wrapper { padding-bottom: 70%; } /* 手機上讓高度稍高一點 */
+}
+</style>
 
+<div class="map-wrapper" aria-hidden="false" role="region" aria-label="地圖：新北市殯儀館">
+  <iframe
+    title="地圖 — 新北市殯儀館"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.156457822896!2d121.4578063!3d25.028763899999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a80d7ca74fcd%3A0x8c08047e5fb532b9!2sNew%20Taipei%20City%20Funeral%20Parlor!5e0!3m2!1sen!2stw!4v1730176113062!5m2!1sen!2stw&hl=zh-TW"
+    loading="lazy"
+    allowfullscreen
+    referrerpolicy="no-referrer-when-downgrade"
+    aria-label="新北市殯儀館地圖">
+  </iframe>
+</div>
 
 
 
@@ -689,24 +709,39 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
        
-<div>
-   <div class="transport-info">
-    <h2 class="title">臺北市立懷愛館</h2>
-    <p class="subtitle">懷恩專車＆停車資訊</p>
+<!-- 交通資訊區塊（圖文整合） -->
+<section id="transport-info" class="transport-section">
+  <h2><strong>交通資訊</strong></h2>
 
-    <!-- 圖片展示 -->
-    <div class="image-gallery">
-        <img src="image/交通00004.GIF" alt="S31" class="gallery-img" aria-label="交通指引" loading="lazy">
-        <img src="image/交通00005.GIF" alt="S32" class="gallery-img" aria-label="交通指引" loading="lazy">
-        <img src="image/交通00003.GIF" alt="S33" class="gallery-img" aria-label="交通指引" loading="lazy">
-        <img src="image/交通00002.GIF" alt="S34" class="gallery-img" aria-label="交通指引" loading="lazy">
-        <img src="image/交通00001.GIF" alt="S35" class="gallery-img" aria-label="交通指引" loading="lazy">
-        <img src="image/交通00007.JPG" alt="搭車資訊" class="gallery-img" aria-label="搭車資訊" loading="lazy">
-        <img src="image/交通00008.JPG" alt="交通指引" class="gallery-img" aria-label="交通指引" loading="lazy">
-        <img src="image/交通00009.JPG" alt="指引圖" class="gallery-img" aria-label="指引圖" loading="lazy">
-        <img src="image/交通00006.JPG" alt="停車資訊" class="gallery-img" aria-label="停車資訊" loading="lazy">
+  <!-- 基本交通文字資訊 -->
+  <div class="transport-details">
+    <div class="transport-item">
+      <h3>📍 新北市立殯儀館</h3>
+      <p><strong>地址：</strong>220036 新北市板橋區中正路560號</p>
     </div>
-</div>
+    <div class="transport-item">
+      <h4>🚍 公車資訊</h4>
+      <p><strong>新海橋頭站：</strong>658、857、橘5</p>
+      <p><strong>新海抽水站：</strong>810、786</p>
+      <p>🧍‍♂️ 步行約 3 分鐘即可到達</p>
+    </div>
+    <div class="transport-item">
+      <a class="map-link" href="https://maps.app.goo.gl/w3kGiPXUEFZgyBBt9?g_st=ipc" target="_blank">
+        ➤ 點我開啟 Google 地圖
+      </a>
+    </div>
+  </div>
+
+  <!-- 圖片展示區 -->
+  <div class="transport-image-area">
+    <h2 class="title">殯儀館導引圖與停車資訊</h2>
+    <p class="subtitle">點擊圖片可放大查看</p>
+    <div class="image-gallery">
+      <img src="image/IMG_6325.png" alt="殯儀館資訊" class="gallery-img" loading="lazy">
+      <img src="image/祥安資訊-板殯.png" alt="停車地圖" class="gallery-img" loading="lazy">
+    </div>
+  </div>
+</section>
 
 <style>
     :root {
